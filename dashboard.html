@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Startup Mentor AI</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<link rel="stylesheet" href="css/dashboard.css">
+
+</head>
+
+<body>
+
+<div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+<div class="layout">
+
+<!-- ===========================
+SIDEBAR
+============================ -->
+
+<aside class="sidebar" id="sidebar">
+
+<div class="logo">
+
+<i class="fa-solid fa-lightbulb"></i>
+
+<h2>Startup Mentor AI</h2>
+
+</div>
+
+<nav>
+
+<a class="active" href="#top" data-scroll><i class="fa-solid fa-house"></i>Dashboard</a>
+<a href="#canvasSection" data-scroll><i class="fa-solid fa-lightbulb"></i>Business Ideas</a>
+<a href="#marketCard" data-scroll><i class="fa-solid fa-chart-line"></i>Market Research</a>
+<a href="#revenueCard" data-scroll><i class="fa-solid fa-coins"></i>Revenue Model</a>
+<a href="#legalCard" data-scroll><i class="fa-solid fa-scale-balanced"></i>Legal</a>
+<a href="#roadmapCard" data-scroll><i class="fa-solid fa-road"></i>Roadmaps</a>
+<a href="#exportCard" data-scroll><i class="fa-solid fa-download"></i>Export</a>
+
+</nav>
+
+</aside>
+
+<!-- ===========================
+MAIN
+============================ -->
+
+<main id="top">
+
+<header>
+
+<button class="sidebarToggle" id="sidebarToggle" aria-label="Toggle menu">
+<i class="fa-solid fa-bars"></i>
+</button>
+
+<div>
+
+<h1>Startup Mentor AI</h1>
+
+<p>
+AI-powered Startup Validation Platform
+</p>
+
+</div>
+
+<div class="profile">
+
+<button id="notifyBtn" aria-label="Notifications">
+
+<i class="fa-solid fa-bell"></i>
+
+</button>
+
+<button id="themeToggle" aria-label="Toggle dark mode">
+
+<i class="fa-solid fa-moon"></i>
+
+</button>
+
+<img src="https://i.pravatar.cc/100" alt="">
+
+</div>
+
+</header>
+
+<!-- ===========================
+HERO
+============================ -->
+
+<section class="hero">
+
+<h2>
+
+Describe Your Startup Idea
+
+</h2>
+
+<p>
+
+Example:
+AI grocery delivery startup for Tier-2 cities.
+
+</p>
+
+<div class="search">
+
+<input
+type="text"
+id="ideaInput"
+placeholder="Enter your startup idea here...">
+
+<button id="generateBtn">
+
+<i class="fa-solid fa-wand-magic-sparkles"></i>
+
+Generate
+
+</button>
+
+</div>
+
+</section>
+
+<!-- ===========================
+KPI CARDS
+============================ -->
+
+<section class="kpis">
+
+<div class="kpi">
+
+<h4>
+
+Startup Score
+
+</h4>
+
+<h2 id="score">
+
+--
+
+</h2>
+
+</div>
+
+<div class="kpi">
+
+<h4>
+
+Market Potential
+
+</h4>
+
+<h2 id="potential">
+
+High
+
+</h2>
+
+</div>
+
+<div class="kpi">
+
+<h4>
+
+Estimated Revenue
+
+</h4>
+
+<h2 id="revenueEstimate">
+
+₹10L+
+
+</h2>
+
+</div>
+
+<div class="kpi">
+
+<h4>
+
+Risk Level
+
+</h4>
+
+<h2 id="risk">
+
+Medium
+
+</h2>
+
+</div>
+
+</section>
+
+<!-- ===========================
+AI ANALYSIS
+============================ -->
+
+<section class="agents">
+
+<h3>
+
+AI Analysis Progress
+
+</h3>
+
+<div id="pipelineError" class="pipeline-error" hidden></div>
+
+<div class="agent" data-agent="0">
+
+<div>
+
+🧠 Business Analyst
+
+</div>
+
+<span class="status">
+
+Waiting
+
+</span>
+
+</div>
+
+<div class="agent" data-agent="1">
+
+<div>
+
+📈 Market Research Agent
+
+</div>
+
+<span class="status">
+
+Waiting
+
+</span>
+
+</div>
+
+<div class="agent" data-agent="2">
+
+<div>
+
+💰 Finance Advisor
+
+</div>
+
+<span class="status">
+
+Waiting
+
+</span>
+
+</div>
+
+<div class="agent" data-agent="3">
+
+<div>
+
+⚖ Legal Expert
+
+</div>
+
+<span class="status">
+
+Waiting
+
+</span>
+
+</div>
+
+<div class="agent" data-agent="4">
+
+<div>
+
+📄 Report Generator
+
+</div>
+
+<span class="status">
+
+Waiting
+
+</span>
+
+</div>
+
+</section>
+<!-- ===========================
+DASHBOARD GRID
+============================ -->
+
+<section class="grid">
+
+    <!-- BUSINESS SUMMARY -->
+
+    <div class="card">
+
+        <h3>
+            <i class="fa-solid fa-file-lines"></i>
+            Business Summary
+        </h3>
+
+        <p id="summary">
+            Waiting for AI analysis...
+        </p>
+
+    </div>
+
+    <!-- STARTUP SCORE -->
+
+    <div class="card">
+
+        <h3>
+            <i class="fa-solid fa-chart-pie"></i>
+            Startup Score
+        </h3>
+
+        <div id="scoreCircle">
+
+            <div class="circle">
+
+                <span id="scorePercent">
+
+                    0%
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- MARKET ANALYSIS -->
+
+    <div class="card" id="marketCard">
+
+        <h3>
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            Market Analysis
+
+        </h3>
+
+        <p id="market">
+
+            Waiting...
+
+        </p>
+
+    </div>
+
+    <!-- TARGET AUDIENCE -->
+
+    <div class="card">
+
+        <h3>
+
+            <i class="fa-solid fa-users"></i>
+
+            Target Audience
+
+        </h3>
+
+        <p id="audience">
+
+            Waiting...
+
+        </p>
+
+    </div>
+
+    <!-- REVENUE MODEL -->
+
+    <div class="card" id="revenueCard">
+
+        <h3>
+
+            <i class="fa-solid fa-money-bill-trend-up"></i>
+
+            Revenue Model
+
+        </h3>
+
+        <p id="revenue">
+
+            Waiting...
+
+        </p>
+
+    </div>
+
+    <!-- MARKETING STRATEGY -->
+
+    <div class="card">
+
+        <h3>
+
+            <i class="fa-solid fa-bullhorn"></i>
+
+            Marketing Strategy
+
+        </h3>
+
+        <p id="marketing">
+
+            Waiting...
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ===========================
+BUSINESS MODEL CANVAS
+============================ -->
+
+<section class="canvas" id="canvasSection">
+
+<h2>
+
+<i class="fa-solid fa-table-cells-large"></i>
+
+Business Model Canvas
+
+</h2>
+
+<div class="canvas-grid">
+
+<div class="card">
+
+<h3>🎯 Value Proposition</h3>
+
+<ul id="valueProp">
+
+<li>Waiting...</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<h3>👥 Customer Segments</h3>
+
+<ul id="customerSegments">
+
+<li>Waiting...</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<h3>📢 Channels</h3>
+
+<ul id="channels">
+
+<li>Waiting...</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<h3>🤝 Key Partners</h3>
+
+<ul id="partners">
+
+<li>Waiting...</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<h3>⚙ Key Activities</h3>
+
+<ul id="activities">
+
+<li>Waiting...</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<h3>💰 Revenue Streams</h3>
+
+<ul id="revenueStreams">
+
+<li>Waiting...</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<h3>💸 Cost Structure</h3>
+
+<ul id="costStructure">
+
+<li>Waiting...</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<h3>📈 Growth Strategy</h3>
+
+<ul id="growthStrategy">
+
+<li>Waiting...</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+LEGAL + ROADMAP + FUNDING
+============================ -->
+
+<section class="grid">
+
+<div class="card" id="legalCard">
+
+<h3>
+
+⚖ Legal Checklist
+
+</h3>
+
+<ul id="legal">
+
+<li>Waiting...</li>
+
+</ul>
+
+</div>
+
+<div class="card" id="roadmapCard">
+
+<h3>
+
+🗺 Roadmap
+
+</h3>
+
+<ol id="roadmap">
+
+<li>Waiting...</li>
+
+</ol>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+💵 Funding Options
+
+</h3>
+
+<ul id="funding">
+
+<li>Waiting...</li>
+
+</ul>
+
+</div>
+
+</section>
+<!-- ===========================
+COMPETITOR ANALYSIS
+============================ -->
+
+<section class="competitors">
+
+<h2>
+
+<i class="fa-solid fa-trophy"></i>
+
+Competitor Analysis
+
+</h2>
+
+<div class="card">
+
+<table class="competitor-table">
+
+<thead>
+
+<tr>
+
+<th>Competitor</th>
+
+<th>Strength</th>
+
+<th>Weakness</th>
+
+</tr>
+
+</thead>
+
+<tbody id="competitorTable">
+
+<tr>
+
+<td>Waiting...</td>
+
+<td>--</td>
+
+<td>--</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+<!-- ===========================
+CHARTS
+============================ -->
+
+<section class="charts">
+
+<h2>
+
+<i class="fa-solid fa-chart-column"></i>
+
+Business Analytics
+
+</h2>
+
+<div class="chart-grid">
+
+<div class="card">
+
+<h3>
+
+Revenue Sources
+
+</h3>
+
+<canvas id="revenueChart"></canvas>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+Market Growth
+
+</h3>
+
+<canvas id="marketChart"></canvas>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+SWOT ANALYSIS
+============================ -->
+
+<section class="swot">
+
+<h2>
+
+<i class="fa-solid fa-chess"></i>
+
+SWOT Analysis
+
+</h2>
+
+<div class="swot-grid">
+
+<div class="box">
+
+<h3>💪 Strengths</h3>
+
+<ul id="strengths">
+
+<li>Waiting...</li>
+
+</ul>
+
+</div>
+
+<div class="box">
+
+<h3>⚠ Weaknesses</h3>
+
+<ul id="weaknesses">
+
+<li>Waiting...</li>
+
+</ul>
+
+</div>
+
+<div class="box">
+
+<h3>🚀 Opportunities</h3>
+
+<ul id="opportunities">
+
+<li>Waiting...</li>
+
+</ul>
+
+</div>
+
+<div class="box">
+
+<h3>🔥 Threats</h3>
+
+<ul id="threats">
+
+<li>Waiting...</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+BOTTOM GRID
+============================ -->
+
+<section class="bottom-grid">
+
+<div class="card">
+
+<h3>
+
+<i class="fa-solid fa-folder-open"></i>
+
+Saved Startup Projects
+
+</h3>
+
+<ul id="history">
+
+<li>No saved projects yet.</li>
+
+</ul>
+
+</div>
+
+<div class="card" id="exportCard">
+
+<h3>
+
+<i class="fa-solid fa-file-pdf"></i>
+
+Export Report
+
+</h3>
+
+<p>
+
+Download your complete AI-generated startup report.
+
+</p>
+
+<button id="downloadPDF">
+
+<i class="fa-solid fa-download"></i>
+
+Download PDF
+
+</button>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+
+© 2026 Startup Mentor AI • Built with ❤️ using HTML, CSS, JavaScript & Gemini AI
+
+</p>
+
+</footer>
+
+</main>
+
+</div>
+
+<!-- ===========================
+LIBRARIES
+============================ -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="js/api.js"></script>
+
+<script src="js/dashboard.js"></script>
+
+</body>
+
+</html>
